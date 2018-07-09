@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <header>
+        <!--
+<div id="account">
+</div>
+-->
+    </header>
+    <div id="contents">
+        <div id="control">
+            <td><input type="submit" id="update" value=".csv"></td>
+            <td><input type="submit" id="delete" value="delete checked items"></td>
+            <select name="pulldown1" id="pulldown1">
+                <option value="">sort</option>
+                <option value="month.html">month</option>
+                <option value="week.html">week</option>
+            </select>
+            <select name="pulldown2" id="pulldown2">
+                <option value="month.html">transition</option>
+                <option value="week.html">test</option>
+            </select>
+        </div>
+        <div id="add">
+            <input type="search" list="re" id="reText1" name="re" placeholder="revenue" autocomplete="on" required>
+            <datalist id="re">
+					           <option value="revenue"></option>
+					           <option value="expenditure"></option>
+				            </datalist>
+
+            <input type="text" id="text1" placeholder="content">
+            <input type="text" class="text1" placeholder="money">
+            <input type="text" class="text1" placeholder="day">
+            <input type="submit" id="addsubmit" value="add">
+        </div>
+        <div id="month">
+            <input type="button" value="◀" id="left">
+            <input type="button" value="July week1" id="monthButton">
+            <input type="button" value="▶" id="right">
+        </div>
+        <div id="table">
+            <table class="sticky_table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="search" list="re" id="reText2" name="re" placeholder="revenue" autocomplete="on" value="収入" required>
+                            <datalist id="re">
+					           <option value="revenue"></option>
+					           <option value="expenditure"></option>
+				            </datalist>
+                        </td>
+                        <td><input type="text" id="text2" placeholder="content" value="生活費"></td>
+                        <td><input type="text" class="text2" placeholder="money" value="100000"></td>
+                        <td><input type="checkbox" id="checkbox"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <div id="copylight">
+            <small>© 2018 MOTONOTE</small>
+        </div>
+    </footer>
+    <script type="text/javascript" src="js/pulldown.js"></script>
+</body>
+
+</html>

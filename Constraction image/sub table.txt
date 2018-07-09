@@ -1,0 +1,8 @@
+create table subTable (
+tableName varchar(20) multiple key,
+RE tinyint(1),
+content varchar(15),
+price int(10),
+year date,
+week int(12)
+)

@@ -1,0 +1,213 @@
+@charset "utf-8";
+@import url(../css/main.css);
+/*-----month-----*/
+
+u {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    float: right;
+    /*    background-color: magenta;*/
+}
+
+#control {
+    height: 2.3em;
+    width: 75em;
+    /*    background-color: cyan;*/
+    margin: 0 auto;
+}
+
+#update {
+    width: 4em;
+    font-size: 1.6em;
+    float: right;
+    margin-left: 0.2em;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    color: white;
+    background-color: darkolivegreen;
+    background-image: url(../image/download.png);
+    background-repeat: no-repeat;
+    background-position: 3em;
+}
+
+#delete {
+    width: 10em;
+    font-size: 1.6em;
+    float: right;
+    background-color: darkolivegreen;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    color: white;
+}
+
+#pulldown1 {
+    width: 4em;
+    font-size: 1.6em;
+    float: left;
+    background-color: darkolivegreen;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    color: white;
+    margin-right: 0.2em;
+}
+
+#pulldown2 {
+    width: 28.3em;
+    font-size: 1.6em;
+    float: left;
+    background-color: darkolivegreen;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    color: white;
+}
+
+#add {
+    height: 3em;
+    width: 75em;
+    text-align: right;
+    margin: 0 auto;
+}
+
+#reText1 {
+    background-color: white;
+    width: 7.5em;
+    font-size: 1.8em;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+
+#text1 {
+    background-color: white;
+    width: 15.3em;
+    font-size: 1.8em;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+
+.text1 {
+    background-color: white;
+    width: 6.7em;
+    font-size: 1.8em;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+
+#addsubmit {
+    width: 4em;
+    margin-left: 0.5em;
+    font-size: 1.6em;
+    background-color: darkolivegreen;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    color: white;
+}
+
+#month {
+    height: 2.1em;
+    width: 75em;
+    margin: 0 auto 0.5em 5.2em;
+    display: flex;
+    align-items: center;
+}
+
+#left {
+    background-color: darkolivegreen;
+    border: 1px solid lightgray;
+    height: 100%;
+    color: white;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+#monthButton {
+    width: 100%;
+    height: 100%;
+    font-size: 1.4em;
+    background-color: darkolivegreen;
+    border: 1px solid lightgray;
+    color: white;
+    border-radius: 4px;
+}
+
+#right {
+    background-color: darkolivegreen;
+    border: 1px solid lightgray;
+    height: 100%;
+    color: white;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+#table {
+    height: 26em;
+    width: 75em;
+    margin: 0 auto;
+    /*        background-color: magenta;*/
+}
+
+#reText2 {
+    background-color: white;
+    width: 10em;
+    font-size: 1.8em;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+
+}
+
+#text2 {
+    background-color: white;
+    width: 18.5em;
+    font-size: 1.8em;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+
+.text2 {
+    background-color: white;
+    width: 8em;
+    font-size: 1.8em;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+
+.sticky_table {
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid darkolivegreen;
+    border-radius: 6px;
+    table-layout: fixed;
+}
+
+.sticky_table thead {
+    margin-left: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.sticky_table tbody {
+    height: 25.5em;
+    display: block;
+    position: relative;
+    overflow-y: scroll;
+    border-collapse: collapse;
+}
+
+.sticky_table td {
+    margin: 0 auto;
+    border-bottom: 1px solid grey;
+    border-collapse: collapse;
+}
+
+
+
+#checkbox {
+    height: 2.8em;
+    width: 2.8em;
+    margin: 0.5em 3em 0 3em;
+}
+
+/*-----up to here-----*/
