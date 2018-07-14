@@ -7,29 +7,24 @@ body {
 
 header {
     height: 2em;
-    width: 76em;
+    width: 77em;
     margin: 0 auto 0.5em auto;
     border-bottom: 1px solid lightgray;
     /*    background-color: chocolate;*/
 }
 
-#account {
-    height: 100%;
-    width: 3em;
-    background-color: green;
-    display: flex;
-    align-items: center;
-}
-
 #contents {
-    width: 85em;
-    height: 33em;
+    margin: 0 auto;
+    width: 78em;
+    height: 34em;
+
 }
 
 footer {
-    height: 3em;
-    width: 75em;
+    height: 2em;
+    width: 78em;
     margin: 0 auto;
+    /*    background-color: blue;*/
 }
 
 #copylight {

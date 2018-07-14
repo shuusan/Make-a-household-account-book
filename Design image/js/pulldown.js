@@ -10,4 +10,9 @@ $(function () {
             window.location.href = $(this).val();
         }
     });
+    $('select[name=language]').change(function () {
+        if ($(this).val() != '') {
+            window.location.href = $(this).val();
+        }
+    });
 });
