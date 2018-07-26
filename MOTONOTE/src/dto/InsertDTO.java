@@ -1,0 +1,5 @@
+package dto;
+
+class InsertDTO {
+
+}
