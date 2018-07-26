@@ -1,5 +1,5 @@
 create table user (
 userid varchar(15) primary key,
-password varchar(30),
+password varchar(30) not null,
 mail varchar(50) not null
 )

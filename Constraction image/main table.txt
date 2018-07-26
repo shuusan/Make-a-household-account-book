@@ -1,4 +1,4 @@
 create table mainTable (
 userid varchar(15) primary key,
-tableName varchar(20) multiple key
-)
+tableName varchar(20) unique not null
+);

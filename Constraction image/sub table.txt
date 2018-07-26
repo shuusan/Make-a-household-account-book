@@ -1,5 +1,5 @@
 create table subTable (
-tableName varchar(20) multiple key,
+tableName varchar(20) primarykey,
 RE tinyint(1),
 content varchar(15),
 price int(10),
