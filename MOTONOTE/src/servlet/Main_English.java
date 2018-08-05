@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Main_English
@@ -28,7 +29,19 @@ public class Main_English extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String view = "/WEB-INF/view/Loan_JSP.jsp";
+		String view="";
+		try{
+			HttpSession session = request.getSession();
+			int number = (int)session.getAttribute("e_pageNumber");
+
+			if(1==number){
+				view = "/WEB-INF/e_view/e_week.jsp";
+			}else{
+				view = "/WEB-INF/e_view/e_month.jsp";
+			}
+		}catch(NullPointerException e){
+			view = "/WEB-INF/e_view/e_month.jsp";
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
