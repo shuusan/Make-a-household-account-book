@@ -1,12 +1,91 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.SelectDAO"%>
+<%@page import="dto.SelectDTO"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ja">
+<%ArrayList<SelectDTO> array = SelectDAO.table(); %>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>month</title>
+    <link rel="stylesheet" href="css/j_css.css">
 </head>
-<body>
 
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <header>
+        <div id="top">
+            <a href="month.html"><u>How to use it</u></a>
+            <select name="language" id="language">
+                <option value="../Japanese/month.html">日本語</option>
+                <option value="../English/month.html">English</option>
+            </select>
+        </div>
+    </header>
+    <div id="contents">
+
+        <div id="control">
+            <select name="pulldown1" id="pulldown1">
+                <option value="">並び替え</option>
+                <option value="month.html">月</option>
+                <option value="week.html">週</option>
+            </select>
+            <select name="pulldown2" id="pulldown2">
+                <option value="month.html">生活費</option>
+                <option value="test.html">食費</option>
+            </select>
+            <input type="submit" id="delete" value="チェックした項目を削除">
+            <input type="submit" id="up" value=".csv  ">
+        </div>
+
+        <div id="add">
+            <input type="search" list="re" id="reText1" name="re" placeholder="ダブルクリック" autocomplete="on" required>
+            <datalist id="re">
+					           <option value="収入"></option>
+					           <option value="支出"></option>
+				            </datalist>
+            <input type="text" id="text1" placeholder="収支内容">
+            <input type="text" class="text1" placeholder="収支金額">
+            <input type="text" class="text1" placeholder="日付">
+            <input type="submit" id="addsubmit" value="追加">
+        </div>
+
+        <div id="month">
+            <input type="button" value="◀" id="left">
+            <input type="button" value="7月" id="monthButton">
+            <input type="button" value="▶" id="right">
+        </div>
+
+        <div id="table">
+            <table class="sticky_table">
+                <tbody>
+                <%for(int i=0;i<array.size();i++){
+                String re = (array.get(i).getRe()==0) ? "収入":"支出";
+                %>
+                    <tr>
+                        <td>
+                            <input type="search" list="re" id="reText2" name="re" placeholder="ダブルクリック" autocomplete="on" value="<%=re %>" required>
+                            <datalist id="re">
+					           <option value="収入"></option>
+					           <option value="支出"></option>
+				            </datalist>
+                        </td>
+                        <td><input type="text" id="text2" placeholder="収支内容" value="<%=array.get(i).getContent()%>"></td>
+                        <td><input type="text" class="text2" placeholder="収支金額" value="<%=array.get(i).getCost()%>"></td>
+                        <td><input type="checkbox" id="checkbox" value="<%=i%>"></td>
+                    </tr>
+                    <%} %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <div id="copylight">
+            <small>© 2018 MOTONOTE</small>
+        </div>
+    </footer>
+    <script type="text/javascript" src="../js/pulldown.js"></script>
 </body>
+
 </html>

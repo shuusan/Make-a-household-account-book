@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Main_Japanene
+ * Servlet implementation class start
  */
-@WebServlet("/Main_Japanene")
-public class Main_Japanene extends HttpServlet {
+@WebServlet("/start")
+public class start extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Main_Japanene() {
+    public start() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +29,7 @@ public class Main_Japanene extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String view = "/WEB-INF/view/Loan_JSP.jsp";
+		String view="/WEB-INF/j_view/j_month.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
@@ -38,16 +38,8 @@ public class Main_Japanene extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String re=request.getParameter("re");
-		String cost=request.getParameter("cost");
-		String day=request.getParameter("day");
-		request.setAttribute("re", re);
-		request.setAttribute("cost", cost);
-		request.setAttribute("day", day);
-		String view="/WEB-INF/j_view/j_month.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
