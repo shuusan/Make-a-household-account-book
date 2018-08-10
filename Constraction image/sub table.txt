@@ -1,4 +1,5 @@
-create table syu1Costoflife(
+create table subtable(
+userid varchar(15) primary key,
 RE tinyint(1),
 content varchar(15),
 price int(10),
