@@ -29,7 +29,7 @@ public class Main_Japanene extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String view = "/WEB-INF/view/Loan_JSP.jsp";
+		String view="/WEB-INF/j_view/j_month.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
@@ -40,11 +40,15 @@ public class Main_Japanene extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String re=request.getParameter("re");
+		String content=request.getParameter("content");
 		String cost=request.getParameter("cost");
+		int cost2=Integer.parseInt(cost);
 		String day=request.getParameter("day");
-		request.setAttribute("re", re);
-		request.setAttribute("cost", cost);
-		request.setAttribute("day", day);
+//		request.setAttribute("re", re);
+//		request.setAttribute("content", content);
+//		request.setAttribute("cost", cost);
+//		request.setAttribute("day", day);
+		dao.InsertDAO.table(re, content, cost2, day);
 		String view="/WEB-INF/j_view/j_month.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
