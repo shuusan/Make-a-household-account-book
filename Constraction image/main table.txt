@@ -1,9 +1,0 @@
-create table mainTable (
-userid varchar(15) primary key,
-tableName varchar(20) unique not null
-);
-
-INSERT INTO mainTable VALUES ('syu_1', 'syu_1Cost of life');
-
-GRANT ALL ON *.* TO adminuser@localhost 
-IDENTIFIED BY 'password';

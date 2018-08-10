@@ -1,7 +1,7 @@
 create table subtable(
-userid varchar(15) primary key,
-RE tinyint(1),
-content varchar(15),
+userid varchar(15) not null,
+RE tinyint(1) not null,
+content varchar(50),
 price int(10),
 year date,
 week int(12)
