@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import dto.SelectDTO;
 public class SelectDAO {
 //tableの全取得
-	public static ArrayList<SelectDTO> table(){
+	public static ArrayList<SelectDTO> table(int key){
 		ArrayList<SelectDTO> resultList = new ArrayList<SelectDTO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -21,7 +21,7 @@ public class SelectDAO {
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 					"adminuser",
 					"password");
-			String sql = "SELECT userid,RE,content,price FROM food where userid = 'syu1'";
+			String sql = "SELECT userid,RE,content,price FROM food where userid = 'syu1' AND month = '"+key+"'";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			rs.next();

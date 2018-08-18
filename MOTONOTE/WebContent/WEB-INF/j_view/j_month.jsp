@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <%
-	ArrayList<SelectDTO> array = SelectDAO.table();
+	int month = (int) session.getAttribute("month");
+	ArrayList<SelectDTO> array = SelectDAO.table(month);
 %>
 <head>
 <meta charset="UTF-8">
@@ -54,13 +55,13 @@
 				<input type="submit" id="addsubmit" value="追加">
 			</div>
 		</form>
-
-		<div id="month">
-			<input type="button" value="◀" id="left"> <input
-				type="button" value="7月" id="monthButton"> <input
-				type="button" value="▶" id="right">
-		</div>
-
+		<form action="/MOTONOTE/Main_Japanene" method="get">
+			<div id="month">
+				<button type="submit" value="minus" id="left" name="move">◀</button>
+				<button type="submit" value="month" id="monthButton" name="move"><%=month%>月</button>
+				<button type="submit" value="plus" id="right" name="move">▶</button>
+			</div>
+		</form>
 		<div id="table">
 			<table class="sticky_table">
 				<tbody>
