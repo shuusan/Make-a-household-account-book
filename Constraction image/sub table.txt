@@ -3,6 +3,8 @@ userid varchar(15) not null,
 RE tinyint(1) not null,
 content varchar(50),
 price int(10),
-year date,
-week int(12)
+calender date,
+year int(3000),
+month tinyint(12),
+week tinyint(5)
 );
