@@ -4,6 +4,9 @@ public class SelectDTO {
 	private int re;
 	private String content;
 	private int cost;
+	private int sum;
+	private int spending;
+	private int income;
 	public SelectDTO(){
 
 	}
@@ -12,6 +15,31 @@ public class SelectDTO {
 		this.re = re;
 		this.content = content;
 		this.cost = cost;
+	}
+
+	public SelectDTO(int sum, int spending, int income) {
+		super();
+		this.sum = sum;
+		this.spending = spending;
+		this.income = income;
+	}
+	public int getSpending() {
+		return spending;
+	}
+	public void setSpending(int spending) {
+		this.spending = spending;
+	}
+	public int getIncome() {
+		return income;
+	}
+	public void setIncome(int income) {
+		this.income = income;
+	}
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
 	}
 	public int getRe() {
 		return re;

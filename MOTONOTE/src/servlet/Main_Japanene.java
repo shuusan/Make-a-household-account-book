@@ -33,15 +33,20 @@ public class Main_Japanene extends HttpServlet {
 		HttpSession session = request.getSession();
 		String move = request.getParameter("move");
 		int month = (int)session.getAttribute("month");
+		int year = (int)session.getAttribute("year");
 
 		if(!("month".equals(move))){
 
 			if("plus".equals(move)){
-				month=(month==12)?0:month;
-				session.setAttribute("month", (month+1));
+				year=(month==12)?(year+1):year;
+				month=(month==12)?1:(month+1);
+				session.setAttribute("month", month);
+				session.setAttribute("year", year);
 			}else{
-				month=(month==1)?13:month;
-				session.setAttribute("month", (month-1));
+				year=(month==1)?(year-1):year;
+				month=(month==1)?12:(month-1);
+				session.setAttribute("month", month);
+				session.setAttribute("year", year);
 			}
 		}
 		String view="/WEB-INF/j_view/j_month.jsp";
@@ -54,13 +59,18 @@ public class Main_Japanene extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+
 		String re=request.getParameter("re");
 		String content=request.getParameter("content");
 		String cost=request.getParameter("cost");
 		int cost2=Integer.parseInt(cost);
 		String day=request.getParameter("day");
-		int month = (int)request.getAttribute("month");
-		dao.InsertDAO.table(re, content, cost2, day,month);
+
+		String[] calender = day.split("-");
+		int year = Integer.parseInt(calender[0]);
+		int month = Integer.parseInt(calender[1]);
+
+		dao.InsertDAO.table(re,content,cost2,day,year,month);
 		String view="/WEB-INF/j_view/j_month.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);

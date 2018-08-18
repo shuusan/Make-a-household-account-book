@@ -1,267 +1,275 @@
 @charset "utf-8";
 /*-----month-----*/
-
 #top {
-    display: flex;
-    align-items: center;
-    float: right;
-    height: 100%;
-    /*    background-color: aqua;*/
+	display: flex;
+	align-items: center;
+	float: right;
+	height: 100%;
+	/*    background-color: aqua;*/
 }
 
 u {
-    height: 100%;
-    /*    background-color: magenta;*/
+	height: 100%;
+	/*    background-color: magenta;*/
 }
 
 #language {
-    height: 90%;
-    margin-left: 1em;
-    border: 1px solid lightgray;
-    border-radius: 8px;
+	height: 90%;
+	margin-left: 1em;
+	border: 1px solid lightgray;
+	border-radius: 8px;
 }
 
+#cost {
+	display: flex;
+	align-items: center;
+	float: left;
+	height: 2em;
+	width: 77em;
+	margin:0;
+	color: grey;
+	/*background-color: aqua;*/
+}
 #control {
-    height: 2em;
-    width: 100%;
-    /*    background-color: cyan;*/
-    margin: 0 auto 0.2em auto;
-    display: flex;
-    align-items: center;
+	height: 2em;
+	width: 100%;
+	/*    background-color: cyan;*/
+	margin: 0 auto 0.2em auto;
+	display: flex;
+	align-items: center;
 }
 
 #pulldown1 {
-    width: 10em;
-    height: 100%;
-    font-size: 1.3em;
-    background-color: darkolivegreen;
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    color: white;
+	width: 10em;
+	height: 100%;
+	font-size: 1.3em;
+	background-color: darkolivegreen;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	color: white;
 }
 
 #pulldown2 {
-    height: 100%;
-    width: 32em;
-    margin-left: 0.1em;
-    font-size: 1.3em;
-    background-color: darkolivegreen;
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    color: white;
+	height: 100%;
+	width: 32em;
+	margin-left: 0.1em;
+	font-size: 1.3em;
+	background-color: darkolivegreen;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	color: white;
 }
 
 #delete {
-    height: 100%;
-    width: 13em;
-    margin-left: 0.1em;
-    font-size: 1.3em;
-    background-color: darkolivegreen;
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    color: white;
+	height: 100%;
+	width: 13em;
+	margin-left: 0.1em;
+	font-size: 1.3em;
+	background-color: darkolivegreen;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	color: white;
 }
 
 #up {
-    height: 100%;
-    width: 4em;
-    margin-left: 0.1em;
-    font-size: 1.6em;
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    color: white;
-    background-color: darkolivegreen;
-    background-image: url(../image/download.png);
-    background-repeat: no-repeat;
-    background-position: 3em;
+	height: 100%;
+	width: 4em;
+	margin-left: 0.1em;
+	font-size: 1.6em;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	color: white;
+	background-color: darkolivegreen;
+	background-image: url(../image/download.png);
+	background-repeat: no-repeat;
+	background-position: 3em;
 }
 
 #add {
-    height: 2em;
-    width: 100%;
-    margin: 0 auto 0.3em auto;
-    text-align: right;
-    display: flex;
-    align-items: center;
-    /*    background-color: aqua;*/
+	height: 2em;
+	width: 100%;
+	margin: 0 auto 0.3em auto;
+	text-align: right;
+	display: flex;
+	align-items: center;
+	/*    background-color: aqua;*/
 }
 
 #reText1 {
-    background-color: white;
-    width: 10em;
-    height: 100%;
-    font-size: 1.3em;
-    border: 1px solid lightgray;
-    border-radius: 2px;
+	background-color: white;
+	width: 10em;
+	height: 100%;
+	font-size: 1.3em;
+	border: 1px solid lightgray;
+	border-radius: 2px;
 }
 
 #text1 {
-    background-color: white;
-    width: 25em;
-    font-size: 1.3em;
-    margin-left: 0.1em;
-    border: 1px solid lightgray;
-    border-radius: 2px;
+	background-color: white;
+	width: 25em;
+	font-size: 1.3em;
+	margin-left: 0.1em;
+	border: 1px solid lightgray;
+	border-radius: 2px;
 }
 
 .text1 {
-    background-color: white;
-    width: 10em;
-    font-size: 1.3em;
-    margin: 0 auto;
-    margin-left: 0.1em;
-    border: 1px solid lightgray;
-    border-radius: 2px;
+	background-color: white;
+	width: 10em;
+	font-size: 1.3em;
+	margin: 0 auto;
+	margin-left: 0.1em;
+	border: 1px solid lightgray;
+	border-radius: 2px;
 }
 
 #addsubmit {
-    width: 4.3em;
-    height: 100%;
-    font-size: 1.5em;
-    margin-left: 0.1em;
-    background-color: darkolivegreen;
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    color: white;
+	width: 4.3em;
+	height: 100%;
+	font-size: 1.5em;
+	margin-left: 0.1em;
+	background-color: darkolivegreen;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+	color: white;
 }
 
 #month {
-    height: 2em;
-    width: 100%;
-    margin: 0 auto 0.1em auto;
-    display: flex;
-    align-items: center;
+	height: 2em;
+	width: 100%;
+	margin: 0 auto 0.1em auto;
+	display: flex;
+	align-items: center;
 }
 
 #left {
-    background-color: darkolivegreen;
-    border: 1px solid lightgray;
-    height: 100%;
-    color: white;
-    border-radius: 4px;
-    margin: 0 auto;
+	background-color: darkolivegreen;
+	border: 1px solid lightgray;
+	height: 100%;
+	color: white;
+	border-radius: 4px;
+	margin: 0 auto;
 }
 
 #monthButton {
-    width: 100%;
-    height: 100%;
-    font-size: 1.4em;
-    background-color: darkolivegreen;
-    border: 1px solid lightgray;
-    color: white;
-    border-radius: 4px;
+	width: 100%;
+	height: 100%;
+	font-size: 1.4em;
+	background-color: darkolivegreen;
+	border: 1px solid lightgray;
+	color: white;
+	border-radius: 4px;
 }
 
 #right {
-    background-color: darkolivegreen;
-    border: 1px solid lightgray;
-    height: 100%;
-    color: white;
-    margin: 0 auto;
-    border-radius: 4px;
+	background-color: darkolivegreen;
+	border: 1px solid lightgray;
+	height: 100%;
+	color: white;
+	margin: 0 auto;
+	border-radius: 4px;
 }
 
 #table {
-    height: 26em;
-    width: 100%;
-    margin: 0 auto 0.5em auto;
-    /*        background-color: magenta;*/
+	height: 26em;
+	width: 100%;
+	margin: 0 auto 0.5em auto;
+	/*        background-color: magenta;*/
 }
 
 #reText2 {
-    background-color: white;
-    width: 8.5em;
-    font-size: 1.5em;
-    border: 1px solid lightgray;
-
+	background-color: white;
+	width: 8.5em;
+	font-size: 1.5em;
+	border: 1px solid lightgray;
 }
 
 #text2 {
-    background-color: white;
-    width: 27em;
-    font-size: 1.5em;
-    border: 1px solid lightgray;
+	background-color: white;
+	width: 27em;
+	font-size: 1.5em;
+	border: 1px solid lightgray;
 }
 
 .text2 {
-    background-color: white;
-    width: 10em;
-    font-size: 1.5em;
-    margin: 0 auto;
-    border: 1px solid lightgray;
+	background-color: white;
+	width: 10em;
+	font-size: 1.5em;
+	margin: 0 auto;
+	border: 1px solid lightgray;
 }
 
 .sticky_table {
-    width: 100%;
-    margin: 0 auto;
-    border: 2px solid darkolivegreen;
-    border-radius: 6px;
-    table-layout: fixed;
+	width: 100%;
+	margin: 0 auto;
+	border: 2px solid darkolivegreen;
+	border-radius: 6px;
+	table-layout: fixed;
 }
 
 .sticky_table thead {
-    margin-left: 0;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+	margin-left: 0;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
 }
 
 .sticky_table tbody {
-    height: 26em;
-    display: block;
-    position: relative;
-    overflow-y: scroll;
-    border-collapse: collapse;
-    /*    background-color: aqua;*/
+	height: 26em;
+	display: block;
+	position: relative;
+	overflow-y: scroll;
+	border-collapse: collapse;
+	/*    background-color: aqua;*/
 }
 
 .sticky_table td {
-    width: 100%;
-    margin-left: 0.1em;
-    margin: 0 auto;
-    border-bottom: 1px solid grey;
-    border-collapse: collapse;
-    /*    background-color: aqua;*/
+	width: 100%;
+	margin-left: 0.1em;
+	margin: 0 auto;
+	border-bottom: 1px solid grey;
+	border-collapse: collapse;
+	/*    background-color: aqua;*/
 }
 
 #checkbox {
-    height: 2.5em;
-    width: 2.5em;
-    margin: 0.5em 3em 0 3em;
+	height: 2.5em;
+	width: 2.5em;
+	margin: 0.5em 3em 0 3em;
 }
 
 /*-----up to here-----*/
 body {
-    margin: 0;
-    background-color: ghostwhite;
+	margin: 0;
+	background-color: ghostwhite;
 }
 
 header {
-    height: 2em;
-    width: 77em;
-    margin: 0 auto 0.5em auto;
-    border-bottom: 1px solid lightgray;
-    /*    background-color: chocolate;*/
+	height: 2em;
+	width: 77em;
+	margin: 0 auto 0.5em auto;
+	border-bottom: 1px solid lightgray;
+	/*    background-color: chocolate;*/
 }
 
 #contents {
-    margin: 0 auto;
-    width: 78em;
-    height: 34em;
-
+	margin: 0 auto 0 auto;
+	width: 78em;
+	height: 35em;
+	/*background-color: blue;*/
 }
 
 footer {
-    height: 2em;
-    width: 78em;
-    margin: 0 auto;
-    /*    background-color: blue;*/
+	height: 2em;
+	width: 78em;
+	margin: 0 auto;
+	/*    background-color: blue;*/
 }
 
 #copylight {
-    display: flex;
-    align-items: center;
-    color: darkolivegreen;
-    width: 100%;
-    height: 100%;
+	display: flex;
+	align-items: center;
+	color: darkolivegreen;
+	width: 100%;
+	height: 100%;
 }

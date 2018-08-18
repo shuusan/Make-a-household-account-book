@@ -34,7 +34,9 @@ public class start extends HttpServlet {
 		HttpSession session = request.getSession();
 		Calendar a = Calendar.getInstance();
 		int month = a.get(Calendar.MONTH);
-		session.setAttribute("month", month);
+		int year = a.get(Calendar.YEAR);
+		session.setAttribute("month", month+1);
+		session.setAttribute("year", year);
 		String view="/WEB-INF/j_view/j_month.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);

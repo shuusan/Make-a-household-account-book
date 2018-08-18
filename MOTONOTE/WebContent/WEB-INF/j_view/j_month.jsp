@@ -7,7 +7,20 @@
 <html lang="ja">
 <%
 	int month = (int) session.getAttribute("month");
-	ArrayList<SelectDTO> array = SelectDAO.table(month);
+	int year = (int) session.getAttribute("year");
+	ArrayList<SelectDTO> array = SelectDAO.table(month, year);
+	session.setAttribute("table", array);
+	SelectDTO select = SelectDAO.cost(month, year);
+	int sum,income,spending;
+	if(select==null){
+		sum=0;
+		income=0;
+		spending=0;
+	}else{
+		sum=select.getSum();
+		income=select.getIncome();
+		spending=select.getSpending();
+	}
 %>
 <head>
 <meta charset="UTF-8">
@@ -29,6 +42,11 @@
 	</header>
 	<div id="contents">
 
+		<div id="cost">
+			<p> 今月収支：<%=sum%>　
+				今月収入：<%=income%>　
+				今月支出：<%=spending%></p>
+		</div>
 		<div id="control">
 			<select name="pulldown1" id="pulldown1">
 				<option value="">並び替え</option>
@@ -58,7 +76,8 @@
 		<form action="/MOTONOTE/Main_Japanene" method="get">
 			<div id="month">
 				<button type="submit" value="minus" id="left" name="move">◀</button>
-				<button type="submit" value="month" id="monthButton" name="move"><%=month%>月</button>
+				<button type="submit" value="month" id="monthButton" name="move"><%=month%>月
+				</button>
 				<button type="submit" value="plus" id="right" name="move">▶</button>
 			</div>
 		</form>
