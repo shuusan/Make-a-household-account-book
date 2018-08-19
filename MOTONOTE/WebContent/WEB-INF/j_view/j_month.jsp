@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.SelectDAO"%>
 <%@page import="dto.SelectDTO"%>
+<%@page import="process.csvCreate"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -56,7 +57,7 @@
 				<option value="month.html">生活費</option>
 				<option value="test.html">食費</option>
 			</select> <input type="submit" id="delete" value="チェックした項目を削除"> <input
-				type="submit" id="up" value=".csv  ">
+				type="submit" id="up" value=".csv  " onclick="<%csvCreate.exportCsv(month,sum,income,spending,array);%>">
 		</div>
 
 		<form action="/MOTONOTE/Main_Japanene" method="post">

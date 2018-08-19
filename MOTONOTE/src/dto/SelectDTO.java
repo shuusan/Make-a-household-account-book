@@ -3,6 +3,7 @@ package dto;
 public class SelectDTO {
 	private int re;
 	private String content;
+	private String calender;
 	private int cost;
 	private int sum;
 	private int spending;
@@ -10,11 +11,12 @@ public class SelectDTO {
 	public SelectDTO(){
 
 	}
-	public SelectDTO(int re, String content, int cost) {
+	public SelectDTO(int re, String content, int cost, String calender) {
 		super();
 		this.re = re;
 		this.content = content;
 		this.cost = cost;
+		this.setCalender(calender);
 	}
 
 	public SelectDTO(int sum, int spending, int income) {
@@ -58,6 +60,12 @@ public class SelectDTO {
 	}
 	public void setCost(int cost) {
 		this.cost = cost;
+	}
+	public String getCalender() {
+		return calender;
+	}
+	public void setCalender(String calender) {
+		this.calender = calender;
 	}
 
 }

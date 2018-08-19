@@ -21,7 +21,7 @@ public class SelectDAO {
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 					"adminuser",
 					"password");
-			String sql = "SELECT userid,RE,content,price FROM food where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"'";
+			String sql = "SELECT userid,RE,content,price,calender FROM food where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"'";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			rs.next();
@@ -29,7 +29,8 @@ public class SelectDAO {
 				int re = rs.getInt("RE");
 				String content = rs.getString("content");
 				int price= rs.getInt("price");
-				resultList.add(new SelectDTO(re,content,price));
+				String calender = rs.getString("calender");
+				resultList.add(new SelectDTO(re,content,price,calender));
 			}while(rs.next() == true );
 			con.close();
 		} catch (SQLException e){
