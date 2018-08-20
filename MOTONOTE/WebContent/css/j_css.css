@@ -25,11 +25,21 @@ u {
 	align-items: center;
 	float: left;
 	height: 2em;
-	width: 77em;
-	margin:0;
+	width: 60em;
+	margin: 0;
 	color: grey;
-	/*background-color: aqua;*/
 }
+
+#download {
+	display: flex;
+	align-items: center;
+	float: right;
+	height: 2em;
+	width: 18em;
+	margin: 0;
+	color: grey;
+}
+
 #control {
 	height: 2em;
 	width: 100%;

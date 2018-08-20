@@ -15,6 +15,7 @@
 	int sum = (int)session.getAttribute("sum");
 	int income = (int)session.getAttribute("income");
 	int spending = (int)session.getAttribute("spending");
+	String downlord = (String)session.getAttribute("downlord");
 
 %>
 <head>
@@ -43,6 +44,9 @@
 				今月収入：<%=income%>円　
 				今月支出：<%=spending%>円</p>
 		</div>
+		<div id="download">
+			<p><%=downlord %></p>
+		</div>
 		<div id="control">
 			<select name="pulldown1" id="pulldown1">
 				<option value="">並び替え</option>
@@ -56,7 +60,7 @@
 			<a href="javascript:form1.submit()"><button type="submit" id="delete">チェックした項目を削除</button></a>
 
 			<form action="/MOTONOTE/Main_Japanene" method="post">
-				<button type="submit" id="up" value="0">.csv　</button>
+				<button type="submit" id="up" value="1" name="submit">.csv　</button>
 			</form>
 		</div>
 
@@ -66,10 +70,10 @@
 					<option value="収入">収入</option>
 					<option value="支出">支出</option>
 				</select> <input type="text" id="text1" placeholder="収支内容" name="content" required>
-				<input type="text" class="text1" placeholder="収支金額" name="cost" required>
+				<input type="text" class="text1" placeholder="収支金額" name="cost" pattern="[1-9][0-9]*" required>
 				<input type="text" class="text1" placeholder="日付" name="day"
 					pattern="\d{4}-\d{1,2}-\d{1,2}" required> <button type="submit"
-					id="addsubmit" name="submit" value="1">追加</button>
+					id="addsubmit" name="submit" value="2">追加</button>
 			</div>
 		</form>
 

@@ -40,6 +40,7 @@ public class start extends HttpServlet {
 		int year = a.get(Calendar.YEAR);
 		session.setAttribute("month", month+1);
 		session.setAttribute("year", year);
+		session.setAttribute("downlord", "　");
 		SelectDTO select = SelectDAO.cost(month+1, year);
 		if (select == null) {
 			session.setAttribute("sum", 0);

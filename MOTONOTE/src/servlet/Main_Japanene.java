@@ -41,6 +41,7 @@ public class Main_Japanene extends HttpServlet {
 		String move = request.getParameter("move");
 		int month = (int)session.getAttribute("month");
 		int year = (int)session.getAttribute("year");
+		session.setAttribute("downlord", "　");
 
 		if(!("month".equals(move))){
 
@@ -80,14 +81,15 @@ public class Main_Japanene extends HttpServlet {
 		HttpSession session = request.getSession();
 		String submit = (null!=(String)request.getParameter("submit")) ? (String)request.getParameter("submit"):"0";
 		int sb = Integer.parseInt(submit);
+		System.out.println(sb);
 
 		switch(sb){
 		case 0:
+			session.setAttribute("downlord", "　");
 			ArrayList<SelectDTO> list = (ArrayList<SelectDTO>)session.getAttribute("table");
 			ArrayList<String> deleteList = new ArrayList<String>();
 			for(int i=0;i<list.size();i++){
 				String a = request.getParameter(String.valueOf(i));
-				System.out.println(a);
 				if(a!=null){
 					deleteList.add(a);
 				}
@@ -98,6 +100,7 @@ public class Main_Japanene extends HttpServlet {
 			break;
 
 		case 1:
+			session.setAttribute("downlord", "csvファイルをダウンロードしました。");
 			int month,year,sum, income, spending;
 			month = (int)session.getAttribute("month");
 			year = (int)session.getAttribute("month");
@@ -109,6 +112,7 @@ public class Main_Japanene extends HttpServlet {
 			break;
 
 		case 2:
+			session.setAttribute("downlord", "　");
 			String re=request.getParameter("re");
 			String content=request.getParameter("content");
 			String cost=request.getParameter("cost");
