@@ -51,7 +51,7 @@ public class start extends HttpServlet {
 			session.setAttribute("income", select.getIncome());
 			session.setAttribute("spending", select.getSpending());
 		}
-		String view="/WEB-INF/j_view/j_month.jsp";
+		String view="/WEB-INF/view/main.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

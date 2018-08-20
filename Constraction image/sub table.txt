@@ -1,10 +1,10 @@
-create table subtable(
+create table table(
 userid varchar(15) not null,
 RE tinyint(1) not null,
 content varchar(50),
 price int(10),
 calender date,
-year int(3000),
+year smallint unsigned,
 month tinyint(12),
 week tinyint(5)
 );

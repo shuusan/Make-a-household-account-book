@@ -25,7 +25,7 @@ u {
 	align-items: center;
 	float: left;
 	height: 2em;
-	width: 60em;
+	width: 42em;
 	margin: 0;
 	color: grey;
 }
@@ -35,7 +35,7 @@ u {
 	align-items: center;
 	float: right;
 	height: 2em;
-	width: 18em;
+	width: 13em;
 	margin: 0;
 	color: grey;
 }
@@ -92,7 +92,7 @@ u {
 	background-color: darkolivegreen;
 	background-image: url(../photo/download.png);
 	background-repeat: no-repeat;
-	background-position: 2.7em;
+	background-position: 2.8em;
 }
 
 #add {
