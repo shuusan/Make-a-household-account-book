@@ -19,7 +19,7 @@ public class DeleteDAO {
 						"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 						"adminuser",
 						"password");
-				String sql = "DELETE FROM FOOD WHERE RE = "+array[0]+" AND content = '"+array[1]+"' AND price = "+array[2]+" LIMIT 1";
+				String sql = "DELETE FROM book WHERE RE = "+array[0]+" AND content = '"+array[1]+"' AND price = "+array[2]+" LIMIT 1";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeUpdate();
 				System.out.println(rs);

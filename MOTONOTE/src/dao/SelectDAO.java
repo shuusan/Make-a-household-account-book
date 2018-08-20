@@ -22,7 +22,7 @@ public class SelectDAO {
 					"adminuser",
 					"password");
 			String sql = "SELECT userid,RE,content,price,calender "
-					+ "FROM food where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"' "
+					+ "FROM book where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"' "
 					+ "ORDER BY RE ASC, calender DESC";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -59,7 +59,7 @@ public class SelectDAO {
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 					"adminuser",
 					"password");
-			String sql = "SELECT userid,RE,content,price FROM food where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"'";
+			String sql = "SELECT userid,RE,content,price FROM book where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"'";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			rs.next();
@@ -84,5 +84,38 @@ public class SelectDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public static boolean Login(String user, String pass){
+		boolean flg=false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
+					"adminuser",
+					"password");
+			String sql = "SELECT * FROM user WHERE user = ? AND password = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user);
+			pstmt.setString(2, pass);
+			rs = pstmt.executeQuery();
+			rs.next();
+			if(user.equals(rs.getString("user"))&&pass.equals(rs.getString("password")))
+				flg=true;
+			con.close();
+		} catch (SQLException e){
+			e.printStackTrace();
+			return flg;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return flg;
+		}catch(NullPointerException e){
+			e.printStackTrace();
+			return flg;
+		}
+		return flg;
 	}
 }
