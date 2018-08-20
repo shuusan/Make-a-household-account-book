@@ -72,7 +72,6 @@ public class SelectDAO {
 			}while(rs.next() == true );
 			sum=income-spending;
 			result = new SelectDTO(sum, spending, income);
-			System.out.println(income+sum+spending);
 			con.close();
 		} catch (SQLException e){
 

@@ -12,16 +12,10 @@
 	ArrayList<SelectDTO> array = SelectDAO.table(month, year);
 	session.setAttribute("table", array);
 	SelectDTO select = SelectDAO.cost(month, year);
-	int sum,income,spending;
-	if(select==null){
-		sum=0;
-		income=0;
-		spending=0;
-	}else{
-		sum=select.getSum();
-		income=select.getIncome();
-		spending=select.getSpending();
-	}
+	int sum = (int)session.getAttribute("sum");
+	int income = (int)session.getAttribute("income");
+	int spending = (int)session.getAttribute("spending");
+
 %>
 <head>
 <meta charset="UTF-8">
@@ -34,7 +28,7 @@
 		src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<header>
 		<div id="top">
-			<a href="month.html"><u>How to use it</u></a> <select name="language"
+			<a href="month.html">How to use it</a> <select name="language"
 				id="language">
 				<option value="../Japanese/month.html">日本語</option>
 				<option value="../English/month.html">English</option>
@@ -44,9 +38,10 @@
 	<div id="contents">
 
 		<div id="cost">
-			<p> 今月収支：<%=sum%>　
-				今月収入：<%=income%>　
-				今月支出：<%=spending%></p>
+			<p>
+				今月収支：<%=sum%>円　
+				今月収入：<%=income%>円　
+				今月支出：<%=spending%>円</p>
 		</div>
 		<div id="control">
 			<select name="pulldown1" id="pulldown1">
@@ -56,24 +51,28 @@
 			</select> <select name="pulldown2" id="pulldown2">
 				<option value="month.html">生活費</option>
 				<option value="test.html">食費</option>
-			</select> <input type="submit" id="delete" value="チェックした項目を削除"> <input
-				type="submit" id="up" value=".csv  " onclick="<%csvCreate.exportCsv(month,sum,income,spending,array);%>">
+			</select>
+
+			<a href="javascript:form1.submit()"><button type="submit" id="delete">チェックした項目を削除</button></a>
+
+			<form action="/MOTONOTE/Main_Japanene" method="post">
+				<button type="submit" id="up" value="0">.csv　</button>
+			</form>
 		</div>
 
 		<form action="/MOTONOTE/Main_Japanene" method="post">
 			<div id="add">
-				<input type="search" list="re" id="reText1" name="re"
-					placeholder="ダブルクリック" autocomplete="on" required>
-				<datalist id="re">
-					<option value="収入"></option>
-					<option value="支出"></option>
-				</datalist>
-				<input type="text" id="text1" placeholder="収支内容" name="content">
-				<input type="text" class="text1" placeholder="収支金額" name="cost">
-				<input type="text" class="text1" placeholder="日付" name="day">
-				<input type="submit" id="addsubmit" value="追加">
+				<select id="reText1" name="re">
+					<option value="収入">収入</option>
+					<option value="支出">支出</option>
+				</select> <input type="text" id="text1" placeholder="収支内容" name="content" required>
+				<input type="text" class="text1" placeholder="収支金額" name="cost" required>
+				<input type="text" class="text1" placeholder="日付" name="day"
+					pattern="\d{4}-\d{1,2}-\d{1,2}" required> <button type="submit"
+					id="addsubmit" name="submit" value="1">追加</button>
 			</div>
 		</form>
+
 		<form action="/MOTONOTE/Main_Japanene" method="get">
 			<div id="month">
 				<button type="submit" value="minus" id="left" name="move">◀</button>
@@ -82,31 +81,47 @@
 				<button type="submit" value="plus" id="right" name="move">▶</button>
 			</div>
 		</form>
+
 		<div id="table">
-			<table class="sticky_table">
-				<tbody>
-					<%
-						for (int i = 0; i < array.size(); i++) {
-							String re = (array.get(i).getRe() == 0) ? "収入" : "支出";
-					%>
-					<tr>
-						<td><input type="search" list="re" id="reText2" name="re"
-							placeholder="ダブルクリック" autocomplete="on" value="<%=re%>" required>
-							<datalist id="re">
-								<option value="収入"></option>
-								<option value="支出"></option>
-							</datalist></td>
-						<td><input type="text" id="text2" placeholder="収支内容"
-							value="<%=array.get(i).getContent()%>"></td>
-						<td><input type="text" class="text2" placeholder="収支金額"
-							value="<%=array.get(i).getCost()%>"></td>
-						<td><input type="checkbox" id="checkbox" value="<%=i%>"></td>
-					</tr>
-					<%
-						}
-					%>
-				</tbody>
-			</table>
+			<form action="/MOTONOTE/Main_Japanene" method="post" name="form1">
+				<table class="sticky_table">
+					<tbody>
+						<%
+							for (int i = 0; i < array.size(); i++) {
+								int re = array.get(i).getRe();
+								String content = array.get(i).getContent();
+								int cost = array.get(i).getCost();
+								String id = re + "," + content + "," + cost;
+						%>
+						<tr>
+							<td><select id="reText2" name="re">
+									<%
+										if (0 == re) {
+									%>
+									<option value="収入" selected>収入</option>
+									<option value="支出">支出</option>
+									<%
+										} else {
+									%>
+									<option value="収入">収入</option>
+									<option value="支出" selected>支出</option>
+									<%
+										}
+									%>
+							</select>
+							<td><input type="text" id="text2" placeholder="収支内容"
+								value="<%=content%>"></td>
+							<td><input type="text" class="text2" placeholder="収支金額"
+								value="<%=cost%>"></td>
+							<td><input type="checkbox" id="checkbox" name="<%=i%>"
+								value="<%=id%>"></td>
+						</tr>
+						<%
+							}
+						%>
+					</tbody>
+				</table>
+			</form>
 		</div>
 	</div>
 	<footer>

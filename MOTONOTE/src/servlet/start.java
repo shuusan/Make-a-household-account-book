@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.SelectDAO;
+import dto.SelectDTO;
+
 /**
  * Servlet implementation class start
  */
@@ -37,6 +40,16 @@ public class start extends HttpServlet {
 		int year = a.get(Calendar.YEAR);
 		session.setAttribute("month", month+1);
 		session.setAttribute("year", year);
+		SelectDTO select = SelectDAO.cost(month+1, year);
+		if (select == null) {
+			session.setAttribute("sum", 0);
+			session.setAttribute("income", 0);
+			session.setAttribute("spending", 0);
+		} else {
+			session.setAttribute("sum", select.getSum());
+			session.setAttribute("income", select.getIncome());
+			session.setAttribute("spending", select.getSpending());
+		}
 		String view="/WEB-INF/j_view/j_month.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);

@@ -80,9 +80,9 @@ u {
 	border-radius: 4px;
 	color: white;
 	background-color: darkolivegreen;
-	background-image: url(../image/download.png);
+	background-image: url(../photo/download.png);
 	background-repeat: no-repeat;
-	background-position: 3em;
+	background-position: 2.7em;
 }
 
 #add {
