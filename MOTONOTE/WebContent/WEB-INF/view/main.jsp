@@ -28,7 +28,7 @@
 		src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<header>
 		<div id="top">
-			<a href="/MOTONOTE/Main">ログアウト</a>
+			<a href="/MOTONOTE/Start">ログアウト</a>
 		</div>
 	</header>
 	<div id="contents">

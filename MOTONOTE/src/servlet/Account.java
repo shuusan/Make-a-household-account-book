@@ -51,9 +51,11 @@ public class Account extends HttpServlet {
 		String view="";
 		if(flg==true){
 			session.setAttribute("comment", "　");
+			//ログイン画面へ
 			view="/WEB-INF/view/login.jsp";
 		}else{
 			session.setAttribute("comment", "このユーザー名は既に使用されています。");
+			//登録画面へ
 			view="/WEB-INF/view/registUser.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);

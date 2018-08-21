@@ -21,13 +21,13 @@ import dto.SelectDTO;
 public class Start extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Start() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Start() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,6 +36,7 @@ public class Start extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		session.setAttribute("comment", "　");
+		//ログイン画面へ
 		String view="/WEB-INF/view/login.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
@@ -49,6 +50,7 @@ public class Start extends HttpServlet {
 		String user = (String)request.getParameter("userid");
 		String pass = (String)request.getParameter("password");
 		String view="";
+		//ログイン
 		boolean flg = SelectDAO.Login(user, pass);
 		System.out.println(flg);
 		if(true==flg){
@@ -59,6 +61,7 @@ public class Start extends HttpServlet {
 			session.setAttribute("year", year);
 			session.setAttribute("downlord", "　");
 			session.setAttribute("user", user);
+			//収支・収入・支出の計算
 			SelectDTO select = SelectDAO.cost(user,month+1, year);
 			if (select == null) {
 				session.setAttribute("sum", 0);
@@ -69,9 +72,11 @@ public class Start extends HttpServlet {
 				session.setAttribute("income", select.getIncome());
 				session.setAttribute("spending", select.getSpending());
 			}
+			//家計簿へ
 			view="/WEB-INF/view/main.jsp";
 		}else if(false==flg){
 			session.setAttribute("comment", "IDかパスワードが間違っています。");
+			//ログイン画面へ
 			view="/WEB-INF/view/login.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);

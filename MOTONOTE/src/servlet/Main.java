@@ -43,20 +43,20 @@ public class Main extends HttpServlet {
 		int year = (int)session.getAttribute("year");
 		String user = (String)session.getAttribute("user");
 		session.setAttribute("downlord", "　");
-
 			if(!("month".equals(move))){
 
-				if("plus".equals(move)){
+				if("plus".equals(move)){//次月への移動
 					year=(month==12)?(year+1):year;
 					month=(month==12)?1:(month+1);
 					session.setAttribute("month", month);
 					session.setAttribute("year", year);
-				}else{
+				}else{//前月への移動
 					year=(month==1)?(year-1):year;
 					month=(month==1)?12:(month-1);
 					session.setAttribute("month", month);
 					session.setAttribute("year", year);
 				}
+				//収支・収入・支出の計算
 				SelectDTO select = SelectDAO.cost(user,month, year);
 				if (select == null) {
 					session.setAttribute("sum", 0);
@@ -88,6 +88,7 @@ public class Main extends HttpServlet {
 		SelectDTO select;
 
 		switch(sb){
+		//データの削除
 		case 0:
 			session.setAttribute("downlord", "　");
 			ArrayList<SelectDTO> list = (ArrayList<SelectDTO>)session.getAttribute("table");
@@ -113,6 +114,7 @@ public class Main extends HttpServlet {
 			}
 			break;
 
+		//データのcsvダウンロード
 		case 1:
 			session.setAttribute("downlord", "ダウンロードしました。");
 			int sum, income, spending;
@@ -123,6 +125,7 @@ public class Main extends HttpServlet {
 			csvCreate.exportCsv(month, sum, income, spending, array);
 			break;
 
+			//
 		case 2:
 			session.setAttribute("downlord", "　");
 			String re=request.getParameter("re");
