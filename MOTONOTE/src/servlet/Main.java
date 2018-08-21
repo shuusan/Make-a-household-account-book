@@ -41,6 +41,7 @@ public class Main extends HttpServlet {
 		String move = request.getParameter("move");
 		int month = (int)session.getAttribute("month");
 		int year = (int)session.getAttribute("year");
+		String user = (String)session.getAttribute("user");
 		session.setAttribute("downlord", "　");
 
 			if(!("month".equals(move))){
@@ -56,7 +57,7 @@ public class Main extends HttpServlet {
 					session.setAttribute("month", month);
 					session.setAttribute("year", year);
 				}
-				SelectDTO select = SelectDAO.cost(month, year);
+				SelectDTO select = SelectDAO.cost(user,month, year);
 				if (select == null) {
 					session.setAttribute("sum", 0);
 					session.setAttribute("income", 0);
@@ -83,6 +84,7 @@ public class Main extends HttpServlet {
 		int sb = Integer.parseInt(submit);
 		int month = (int)session.getAttribute("month");
 		int year = (int)session.getAttribute("year");
+		String user = (String)session.getAttribute("user");
 		SelectDTO select;
 
 		switch(sb){
@@ -99,7 +101,7 @@ public class Main extends HttpServlet {
 			if(deleteList!=null){
 				DeleteDAO.delete(deleteList);
 			}
-			select = SelectDAO.cost(month, year);
+			select = SelectDAO.cost(user,month, year);
 			if (select == null) {
 				session.setAttribute("sum", 0);
 				session.setAttribute("income", 0);
@@ -131,8 +133,8 @@ public class Main extends HttpServlet {
 			String[] calender = day.split("-");
 			year = Integer.parseInt(calender[0]);
 			month = Integer.parseInt(calender[1]);
-			dao.InsertDAO.table(re,content,cost2,day,year,month);
-			select = SelectDAO.cost(month, year);
+			dao.InsertDAO.table(user,re,content,cost2,day,year,month);
+			select = SelectDAO.cost(user,month, year);
 			if (select == null) {
 				session.setAttribute("sum", 0);
 				session.setAttribute("income", 0);

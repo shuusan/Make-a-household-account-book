@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.SelectDAO;
-import dto.SelectDTO;
+import dao.InsertDAO;
 
 /**
- * Servlet implementation class start
+ * Servlet implementation class account
  */
-@WebServlet("/Start")
-public class Start extends HttpServlet {
+@WebServlet("/Account")
+public class Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Start() {
+    public Account() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,45 +32,29 @@ public class Start extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		session.setAttribute("comment", "　");
-		String view="/WEB-INF/view/login.jsp";
+		String view="/WEB-INF/view/registUser.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		String user = (String)request.getParameter("userid");
-		String pass = (String)request.getParameter("password");
-		String view="";
-		boolean flg = SelectDAO.Login(user, pass);
+		String userid = request.getParameter("userid");
+		String password = request.getParameter("password");
+		String mail = request.getParameter("email");
+		boolean flg = InsertDAO.user(userid, password, mail);
 		System.out.println(flg);
-		if(true==flg){
-			Calendar a = Calendar.getInstance();
-			int month = a.get(Calendar.MONTH);
-			int year = a.get(Calendar.YEAR);
-			session.setAttribute("month", month+1);
-			session.setAttribute("year", year);
-			session.setAttribute("downlord", "　");
-			session.setAttribute("user", user);
-			SelectDTO select = SelectDAO.cost(user,month+1, year);
-			if (select == null) {
-				session.setAttribute("sum", 0);
-				session.setAttribute("income", 0);
-				session.setAttribute("spending", 0);
-			} else {
-				session.setAttribute("sum", select.getSum());
-				session.setAttribute("income", select.getIncome());
-				session.setAttribute("spending", select.getSpending());
-			}
-			view="/WEB-INF/view/main.jsp";
-		}else if(false==flg){
-			session.setAttribute("comment", "IDかパスワードが間違っています。");
+		String view="";
+		if(flg==true){
+			session.setAttribute("comment", "　");
 			view="/WEB-INF/view/login.jsp";
+		}else{
+			session.setAttribute("comment", "このユーザー名は既に使用されています。");
+			view="/WEB-INF/view/registUser.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);

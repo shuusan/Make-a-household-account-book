@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import dto.SelectDTO;
 public class SelectDAO {
 	//表示するtableの全取得
-	public static ArrayList<SelectDTO> table(int key,int key2){
+	public static ArrayList<SelectDTO> table(String user,int key,int key2){
 		ArrayList<SelectDTO> resultList = new ArrayList<SelectDTO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -22,7 +22,7 @@ public class SelectDAO {
 					"adminuser",
 					"password");
 			String sql = "SELECT userid,RE,content,price,calender "
-					+ "FROM book where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"' "
+					+ "FROM book where userid = '"+user+"' AND month = '"+key+"' AND year = '"+key2+"' "
 					+ "ORDER BY RE ASC, calender DESC";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -45,7 +45,7 @@ public class SelectDAO {
 		}
 		return resultList;
 	}
-	public static SelectDTO cost(int key,int key2){
+	public static SelectDTO cost(String user,int key,int key2){
 		SelectDTO result = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -59,7 +59,7 @@ public class SelectDAO {
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 					"adminuser",
 					"password");
-			String sql = "SELECT userid,RE,content,price FROM book where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"'";
+			String sql = "SELECT userid,RE,content,price FROM book where userid = '"+user+"' AND month = '"+key+"' AND year = '"+key2+"'";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			rs.next();
@@ -97,14 +97,15 @@ public class SelectDAO {
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 					"adminuser",
 					"password");
-			String sql = "SELECT * FROM user WHERE user = ? AND password = ?";
+			String sql = "SELECT * FROM user WHERE userid = ? AND password = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user);
 			pstmt.setString(2, pass);
 			rs = pstmt.executeQuery();
 			rs.next();
-			if(user.equals(rs.getString("user"))&&pass.equals(rs.getString("password")))
+			if(user.equals(rs.getString("userid"))&&pass.equals(rs.getString("password"))){
 				flg=true;
+			}
 			con.close();
 		} catch (SQLException e){
 			e.printStackTrace();

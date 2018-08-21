@@ -1,0 +1,9 @@
+//月ごとのデータ取得
+SELECT userid,RE,content,price,calender FROM book where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"' "ORDER BY RE ASC, calender DESC"
+
+//収支計算
+SELECT userid,RE,content,price FROM book where userid = 'syu1' AND month = '"+key+"' AND year = '"+key2+"'
+
+INSERT INTO book VALUES('syu1',?,?,?,?,?,?);
+
+DELETE FROM book WHERE RE = "+array[0]+" AND content = '"+array[1]+"' AND price = "+array[2]+" LIMIT 1

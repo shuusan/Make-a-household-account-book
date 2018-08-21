@@ -9,9 +9,9 @@
 <%
 	int month = (int) session.getAttribute("month");
 	int year = (int) session.getAttribute("year");
-	ArrayList<SelectDTO> array = SelectDAO.table(month, year);
+	String user = (String)session.getAttribute("user");
+	ArrayList<SelectDTO> array = SelectDAO.table(user,month, year);
 	session.setAttribute("table", array);
-	SelectDTO select = SelectDAO.cost(month, year);
 	int sum = (int) session.getAttribute("sum");
 	int income = (int) session.getAttribute("income");
 	int spending = (int) session.getAttribute("spending");
@@ -28,7 +28,7 @@
 		src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<header>
 		<div id="top">
-			<a href="month.html">How to use it</a>
+			<a href="/MOTONOTE/Main">ログアウト</a>
 		</div>
 	</header>
 	<div id="contents">
