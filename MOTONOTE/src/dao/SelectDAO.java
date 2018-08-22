@@ -21,10 +21,11 @@ public class SelectDAO {
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 					"adminuser",
 					"password");
-			String sql = "SELECT userid,RE,content,price,calender "
-					+ "FROM book where userid = '"+user+"' AND month = '"+key+"' AND year = '"+key2+"' "
-					+ "ORDER BY RE ASC, calender DESC";
+			String sql = "SELECT userid,RE,content,price,calender FROM book where userid = ? AND month = ? AND year =  ? ORDER BY RE ASC, calender DESC";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user);
+			pstmt.setInt(2, key);
+			pstmt.setInt(3, key2);
 			rs = pstmt.executeQuery();
 			rs.next();
 			do{
@@ -59,8 +60,11 @@ public class SelectDAO {
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 					"adminuser",
 					"password");
-			String sql = "SELECT userid,RE,content,price FROM book where userid = '"+user+"' AND month = '"+key+"' AND year = '"+key2+"'";
+			String sql = "SELECT userid,RE,content,price FROM book where userid = ? AND month = ? AND year = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user);
+			pstmt.setInt(2, key);
+			pstmt.setInt(3, key2);
 			rs = pstmt.executeQuery();
 			rs.next();
 			do{

@@ -11,7 +11,7 @@
 	<div class="form-wrapper">
 		<h1>新規登録</h1>
 		<form action="/MOTONOTE/Account" method="post">
-			<p><%=session.getAttribute("comment") %></p>
+			<p style="color: blue"><%=session.getAttribute("comment") %></p>
 			<div class="form-item">
 				<label for="userid"></label> <input type="text" name="userid"
 					required="required" placeholder="User ID"></input>

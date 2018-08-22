@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DeleteDAO {
-	public static void delete(ArrayList<String> list){
+	public static void delete(String userid,ArrayList<String> list){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int rs = 0;
@@ -19,8 +19,12 @@ public class DeleteDAO {
 						"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 						"adminuser",
 						"password");
-				String sql = "DELETE FROM book WHERE RE = "+array[0]+" AND content = '"+array[1]+"' AND price = "+array[2]+" LIMIT 1";
+				String sql = "DELETE FROM book WHERE userid = ? AND RE = ? AND content = ? AND price = ? LIMIT 1";
 				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, userid);
+				pstmt.setInt(2, Integer.parseInt(array[0]));
+				pstmt.setString(3, array[1]);
+				pstmt.setInt(4, Integer.parseInt(array[2]));
 				rs = pstmt.executeUpdate();
 				System.out.println(rs);
 				con.close();

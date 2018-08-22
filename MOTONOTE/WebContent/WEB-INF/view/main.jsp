@@ -39,7 +39,7 @@
 				</p>
 			</div>
 			<div id="download">
-				<p><%=downlord%></p>
+				<p style="color: blue"><%=downlord%></p>
 			</div>
 			<a href="javascript:form1.submit()"><button type="submit"
 					id="delete">チェックした項目を削除</button></a>

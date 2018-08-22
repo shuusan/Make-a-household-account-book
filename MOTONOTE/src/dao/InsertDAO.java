@@ -17,14 +17,15 @@ public class InsertDAO {
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
 					"adminuser",
 					"password");
-			String sql = "INSERT INTO book VALUES('"+user+"',?,?,?,?,?,?);";
+			String sql = "INSERT INTO book VALUES(?,?,?,?,?,?,?);";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, re);
-			pstmt.setString(2, contents);
-			pstmt.setInt(3, price);
-			pstmt.setString(4, calendar);
-			pstmt.setInt(5, year);
-			pstmt.setInt(6, month);
+			pstmt.setString(1, user);
+			pstmt.setInt(2, re);
+			pstmt.setString(3, contents);
+			pstmt.setInt(4, price);
+			pstmt.setString(5, calendar);
+			pstmt.setInt(6, year);
+			pstmt.setInt(7, month);
 			rs = pstmt.executeUpdate();
 			System.out.println(rs);
 			con.close();

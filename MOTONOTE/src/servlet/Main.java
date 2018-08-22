@@ -100,7 +100,7 @@ public class Main extends HttpServlet {
 				}
 			}
 			if(deleteList!=null){
-				DeleteDAO.delete(deleteList);
+				DeleteDAO.delete(user,deleteList);
 			}
 			select = SelectDAO.cost(user,month, year);
 			if (select == null) {
