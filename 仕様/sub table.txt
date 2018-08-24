@@ -1,0 +1,9 @@
+create table book(
+userid varchar(15) not null,
+RE tinyint(1) not null,
+content varchar(50),
+price int(10),
+calender date,
+year smallint unsigned,
+month tinyint(12)
+);
