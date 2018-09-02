@@ -3,7 +3,7 @@
 <!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>ログイン - MOTONOTE -</title>
 <link rel="stylesheet" href="css/loginStyle.css">
 </head>
@@ -11,7 +11,7 @@
 	<div class="form-wrapper">
 		<h1>Sign In</h1>
 		<form action="/MOTONOTE/Start" method="post">
-			<p style="color: blue"><%=session.getAttribute("comment")==null?"　":session.getAttribute("comment") %></p>
+			<p style="color: blue"><%=session.getAttribute("comment") == null ? "　" : session.getAttribute("comment")%></p>
 			<div class="form-item">
 				<label for="userid"></label> <input type="text" name="userid"
 					required="required" placeholder="User ID"></input>
@@ -32,4 +32,3 @@
 	</div>
 </body>
 </html>
-	<%session.invalidate(); %>

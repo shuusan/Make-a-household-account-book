@@ -39,14 +39,10 @@ public class Main extends HttpServlet {
 		//月の変更<month>
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		if(null==session){
-			response.sendRedirect("/MOTONOTE/Start");
-		}
 		String move = request.getParameter("move");
 		int month = (int)session.getAttribute("month");
 		int year = (int)session.getAttribute("year");
 		String user = (String)session.getAttribute("user");
-		session.setAttribute("pin", "main");
 		session.setAttribute("downlord", "　");
 		if(!("month".equals(move))){
 
@@ -85,15 +81,11 @@ public class Main extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		if(null==session){
-			response.sendRedirect("/MOTONOTE/Start");
-		}
+		String user = (String)session.getAttribute("user");
 		String submit = (String)request.getParameter("submit");
 		int sb = Integer.parseInt(submit);
 		int month = (int)session.getAttribute("month");
 		int year = (int)session.getAttribute("year");
-		String user = (String)session.getAttribute("user");
-		session.setAttribute("pin", "main");
 		session.setAttribute("downlord", "　");
 		SelectDTO select;
 

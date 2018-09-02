@@ -121,6 +121,7 @@
 </body>
 <%
 	} catch (NullPointerException e) {
+		System.out.println("main logout");
 		response.sendRedirect("/MOTONOTE/Start");
 	}
 %>
