@@ -25,7 +25,7 @@ u {
 	align-items: center;
 	float: left;
 	height: 2em;
-	width: 42em;
+	width: 100%;
 	margin: 0;
 	color: grey;
 }
@@ -35,15 +35,14 @@ u {
 	align-items: center;
 	float: right;
 	height: 2em;
-	width: 13em;
+	width: 15%;
 	margin: 0;
-	color: grey;
+	color: blue;
 }
 
 #control {
 	height: 2em;
 	width: 100%;
-	/*    background-color: cyan;*/
 	margin: 0 auto 0.2em auto;
 	display: flex;
 	align-items: center;
@@ -73,7 +72,9 @@ u {
 #delete {
 	height: 100%;
 	width: 13em;
+	margin:0;
 	margin-left: 0.1em;
+	float:right;
 	font-size: 1.3em;
 	background-color: darkolivegreen;
 	border: 1px solid lightgray;
@@ -82,17 +83,18 @@ u {
 }
 
 #up {
+	width: 3.7em;
 	height: 100%;
-	width: 4em;
+	font-size: 1.7em;
+	float:right;
 	margin-left: 0.1em;
-	font-size: 1.6em;
+	background-color: darkolivegreen;
 	border: 1px solid lightgray;
 	border-radius: 4px;
 	color: white;
-	background-color: darkolivegreen;
 	background-image: url(../photo/download.png);
 	background-repeat: no-repeat;
-	background-position: 2.8em;
+	background-position: 2.7em;
 }
 
 #add {
@@ -108,8 +110,8 @@ u {
 #reText1 {
 	background-color: white;
 	width: 10em;
-	height: 100%;
-	font-size: 1.3em;
+	height:1.5em;
+	font-size: 1.2em;
 	border: 1px solid lightgray;
 	border-radius: 2px;
 }
@@ -125,7 +127,7 @@ u {
 
 .text1 {
 	background-color: white;
-	width: 10em;
+	width: 11.1em;
 	font-size: 1.3em;
 	margin: 0 auto;
 	margin-left: 0.1em;
@@ -134,7 +136,7 @@ u {
 }
 
 #addsubmit {
-	width: 4.3em;
+	width: 4.2em;
 	height: 100%;
 	font-size: 1.5em;
 	margin-left: 0.1em;
@@ -145,8 +147,9 @@ u {
 }
 
 #month {
+	float:left;
 	height: 2em;
-	width: 100%;
+	width: 47%;
 	margin: 0 auto 0.1em auto;
 	display: flex;
 	align-items: center;
@@ -189,22 +192,23 @@ u {
 
 #reText2 {
 	background-color: white;
-	width: 8.5em;
-	font-size: 1.5em;
+	width: 10em;
+	height:1.5em;
+	font-size: 1.2em;
 	border: 1px solid lightgray;
 }
 
 #text2 {
 	background-color: white;
-	width: 27em;
-	font-size: 1.5em;
+	width: 30em;
+	font-size: 1.4em;
 	border: 1px solid lightgray;
 }
 
 .text2 {
 	background-color: white;
 	width: 10em;
-	font-size: 1.5em;
+	font-size: 1.4em;
 	margin: 0 auto;
 	border: 1px solid lightgray;
 }
@@ -265,7 +269,7 @@ header {
 #contents {
 	margin: 0 auto 0 auto;
 	width: 78em;
-	height: 35em;
+	height: 33em;
 	/*background-color: blue;*/
 }
 

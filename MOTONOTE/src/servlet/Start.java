@@ -34,8 +34,6 @@ public class Start extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		session.setAttribute("comment", "　");
 		//ログイン画面へ
 		String view="/WEB-INF/view/login.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);

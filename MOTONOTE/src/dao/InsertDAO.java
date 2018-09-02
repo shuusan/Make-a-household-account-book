@@ -9,9 +9,10 @@ public class InsertDAO {
 	public static void table(String user,String reKey,String contents,int price,String calendar,int year,int month){
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		@SuppressWarnings("unused")
 		int rs = 0;
 		try{
-			int re=("収入".equals(reKey))?0:1;
+			int re=Integer.parseInt(reKey);
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/motonote?useSSL=false",
@@ -27,7 +28,6 @@ public class InsertDAO {
 			pstmt.setInt(6, year);
 			pstmt.setInt(7, month);
 			rs = pstmt.executeUpdate();
-			System.out.println(rs);
 			con.close();
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -39,6 +39,7 @@ public class InsertDAO {
 	public static boolean user(String userid,String password,String mail){
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		@SuppressWarnings("unused")
 		int rs = 0;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -52,7 +53,6 @@ public class InsertDAO {
 			pstmt.setString(2, password);
 			pstmt.setString(3, mail);
 			rs = pstmt.executeUpdate();
-			System.out.println(rs);
 			con.close();
 		} catch (SQLException e){
 			e.printStackTrace();

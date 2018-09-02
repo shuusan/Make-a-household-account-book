@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.lang.NullPointerException"%>
 <%@page import="dao.SelectDAO"%>
 <%@page import="dto.SelectDTO"%>
 <%@page import="process.csvCreate"%>
@@ -7,19 +8,20 @@
 <!DOCTYPE html>
 <html lang="ja">
 <%
-	int month = (int) session.getAttribute("month");
-	int year = (int) session.getAttribute("year");
-	String user = (String)session.getAttribute("user");
-	ArrayList<SelectDTO> array = SelectDAO.table(user,month, year);
-	session.setAttribute("table", array);
-	int sum = (int) session.getAttribute("sum");
-	int income = (int) session.getAttribute("income");
-	int spending = (int) session.getAttribute("spending");
-	String downlord = (String) session.getAttribute("downlord");
+	try {
+		String user = (String) session.getAttribute("user");
+		int month = (int) session.getAttribute("month");
+		int year = (int) session.getAttribute("year");
+		ArrayList<SelectDTO> array = SelectDAO.table(user, month, year);
+		session.setAttribute("table", array);
+		int sum = (int) session.getAttribute("sum");
+		int income = (int) session.getAttribute("income");
+		int spending = (int) session.getAttribute("spending");
+		String downlord = (String) session.getAttribute("downlord");
 %>
 <head>
 <meta charset="UTF-8">
-<title>week</title>
+<title>家計簿 - MOTONOTE -</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -39,27 +41,20 @@
 				</p>
 			</div>
 			<div id="download">
-				<p style="color: blue"><%=downlord%></p>
+				<p><%=downlord%></p>
 			</div>
-			<a href="javascript:form1.submit()"><button type="submit"
-					id="delete">チェックした項目を削除</button></a>
-
-			<form action="/MOTONOTE/Main" method="post">
-				<button type="submit" id="up" value="1" name="submit">.csv
-				</button>
-			</form>
 		</div>
 
 		<form action="/MOTONOTE/Main" method="post">
 			<div id="add">
 				<select id="reText1" name="re">
-					<option value="収入">収入</option>
-					<option value="支出">支出</option>
+					<option value="0">収入</option>
+					<option value="1">支出</option>
 				</select> <input type="text" id="text1" placeholder="収支内容" name="content"
-					required> <input type="text" class="text1"
-					placeholder="収支金額" name="cost" pattern="[1-9][0-9]*" required>
-				<input type="text" class="text1" placeholder="日付(yyyy-MM-dd)"
-					name="day" pattern="\d{4}-\d{1,2}-\d{1,2}" required>
+					required> <input type="number" class="text1"
+					placeholder="収支金額(半角数字)" name="cost" required> <input
+					type="date" class="text1" placeholder="日付(yyyy-MM-dd)" name="day"
+					required>
 				<button type="submit" id="addsubmit" name="submit" value="2">追加</button>
 			</div>
 		</form>
@@ -75,36 +70,39 @@
 
 		<div id="table">
 			<form action="/MOTONOTE/Main" method="post" name="form1">
+				<button type="submit" id="up" value="1" name="submit">.csv</button>
+				<button type="submit" id="delete" value="0" name="submit">チェックした項目を削除</button>
+				<button type="submit" id="delete" value="3" name="submit">チェックした項目を更新</button>
 				<table class="sticky_table">
 					<tbody>
 						<%
 							for (int i = 0; i < array.size(); i++) {
-								int re = array.get(i).getRe();
-								String content = array.get(i).getContent();
-								int cost = array.get(i).getCost();
-								String id = re + "," + content + "," + cost;
+									int re = array.get(i).getRe();
+									String content = array.get(i).getContent();
+									int cost = array.get(i).getCost();
+									String id = re + "," + content + "," + cost;
 						%>
 						<tr>
-							<td><select id="reText2" name="re">
+							<td><select id="reText2" name="re<%=i%>">
 									<%
 										if (0 == re) {
 									%>
-									<option value="収入" selected>収入</option>
-									<option value="支出">支出</option>
+									<option value="0" selected>収入</option>
+									<option value="1">支出</option>
 									<%
 										} else {
 									%>
-									<option value="収入">収入</option>
-									<option value="支出" selected>支出</option>
+									<option value="0">収入</option>
+									<option value="1" selected>支出</option>
 									<%
 										}
 									%>
 							</select>
 							<td><input type="text" id="text2" placeholder="収支内容"
-								value="<%=content%>"></td>
-							<td><input type="text" class="text2" placeholder="収支金額"
-								value="<%=cost%>"></td>
-							<td><input type="checkbox" id="checkbox" name="<%=i%>"
+								value="<%=content%>" name="content<%=i%>" required></td>
+							<td><input type="number" class="text2" placeholder="収支金額"
+								value="<%=cost%>" name="cost<%=i%>" required></td>
+							<td><input type="checkbox" id="checkbox" name="check<%=i%>"
 								value="<%=id%>"></td>
 						</tr>
 						<%
@@ -120,7 +118,10 @@
 			<small>© 2018 MOTONOTE</small>
 		</div>
 	</footer>
-	<script type="text/javascript" src="../js/pulldown.js"></script>
 </body>
-
+<%
+	} catch (NullPointerException e) {
+		response.sendRedirect("/MOTONOTE/Start");
+	}
+%>
 </html>
