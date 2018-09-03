@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DeleteDAO {
+	//削除SQL　delete(ユーザーID、削除項目list)
 	public static void delete(String userid,ArrayList<String> list){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -15,6 +16,10 @@ public class DeleteDAO {
 		try{
 			for(int i=0;i<list.size();i++){
 				String[] array = list.get(i).split(",");
+				/*array[0] = ユーザーID
+				 *array[1] = 収入 or 支出
+				 *array[2] = 内容
+				 */
 				Class.forName("com.mysql.jdbc.Driver");
 				con = DriverManager.getConnection(
 						"jdbc:mysql://localhost:3306/motonote?useSSL=false",

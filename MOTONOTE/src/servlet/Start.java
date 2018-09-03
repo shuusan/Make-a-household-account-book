@@ -36,6 +36,7 @@ public class Start extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
+
 		//ログイン画面へ
 		String view="/WEB-INF/view/login.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
@@ -47,13 +48,17 @@ public class Start extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		//パラメーターの取得
 		String user = (String)request.getParameter("userid");
 		String pass = (String)request.getParameter("password");
 		String view="";
-		//ログイン
-		boolean flg = SelectDAO.Login(user, pass);
-		System.out.println(flg);
+		//ユーザーの在否確認SQL
+		boolean flg = SelectDAO.login(user, pass);
+
+
+		/*-----ログイン成功-----*/
 		if(true==flg){
+			//日時の取得
 			Calendar a = Calendar.getInstance();
 			int month = a.get(Calendar.MONTH);
 			int year = a.get(Calendar.YEAR);
@@ -67,18 +72,23 @@ public class Start extends HttpServlet {
 				session.setAttribute("sum", 0);
 				session.setAttribute("income", 0);
 				session.setAttribute("spending", 0);
+
 			} else {
 				session.setAttribute("sum", select.getSum());
 				session.setAttribute("income", select.getIncome());
 				session.setAttribute("spending", select.getSpending());
 			}
-			//家計簿へ
+			//メインフレームへ
 			view="/WEB-INF/view/main.jsp";
+
+
+			/*-----ログイン失敗-----*/
 		}else if(false==flg){
 			session.setAttribute("comment", "IDかパスワードが間違っています。");
 			//ログイン画面へ
 			view="/WEB-INF/view/login.jsp";
 		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

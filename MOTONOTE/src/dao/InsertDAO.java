@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class InsertDAO {
+	//追加登録SQL　table(ユーザーID、収入(0) or 収支(1)、内容、コスト、日時、年、月)
 	public static void table(String user,String reKey,String contents,int price,String calendar,int year,int month){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -36,6 +37,7 @@ public class InsertDAO {
 		}
 	}
 
+	//ユーザー登録SQL　user(ユーザーID、パスワード、メールアドレス)
 	public static boolean user(String userid,String password,String mail){
 		Connection con = null;
 		PreparedStatement pstmt = null;

@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 import dto.SelectDTO;
 public class SelectDAO {
-	//表示するtableの全取得
+
+	//月別一覧表示SQL　table(ユーザー名、月、年)
 	public static ArrayList<SelectDTO> table(String user,int key,int key2){
 		ArrayList<SelectDTO> resultList = new ArrayList<SelectDTO>();
 		Connection con = null;
@@ -46,6 +47,8 @@ public class SelectDAO {
 		}
 		return resultList;
 	}
+
+	//収支・収入・支出計算SQL　cost(ユーザー名、月、年)
 	public static SelectDTO cost(String user,int key,int key2){
 		SelectDTO result = null;
 		Connection con = null;
@@ -90,7 +93,8 @@ public class SelectDAO {
 		return result;
 	}
 
-	public static boolean Login(String user, String pass){
+	//ユーザー在否確認SQL　login(ユーザー名,パスワード)
+	public static boolean login(String user, String pass){
 		boolean flg=false;
 		Connection con = null;
 		PreparedStatement pstmt = null;

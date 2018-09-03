@@ -19,13 +19,13 @@ import dao.InsertDAO;
 public class Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Account() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,6 +34,7 @@ public class Account extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		session.setAttribute("comment", "　");
+		//ユーザー登録画面へ
 		String view="/WEB-INF/view/registUser.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
@@ -45,19 +46,22 @@ public class Account extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		//パラメーターの取得
 		String userid = request.getParameter("userid");
 		String password = request.getParameter("password");
 		String mail = request.getParameter("email");
+		//ユーザー登録SQL
 		boolean flg = InsertDAO.user(userid, password, mail);
-		System.out.println(flg);
 		String view="";
+
 		if(flg==true){
 			session.setAttribute("comment", "　");
 			//ログイン画面へ
 			view="/WEB-INF/view/login.jsp";
+
 		}else{
 			session.setAttribute("comment", "このユーザー名は既に使用されています。");
-			//登録画面へ
+			//ユーザー登録画面へ
 			view="/WEB-INF/view/registUser.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);

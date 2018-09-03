@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UpdateDAO {
+	//更新SQL　update(ユーザーID、更新する項目のlist)
 	public static void update(String userid,ArrayList<String> list){
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -16,7 +17,15 @@ public class UpdateDAO {
 			int j = 0;
 			for(int i=0;i<list.size()/2;i++){
 				String[] array1 = list.get(j).split(",");
+				/*array1[0] = 更新前の収入 or 収支
+				 *array1[1] = 更新前の内容
+				 *array1[2] = 更新前のコスト
+				 */
 				String[] array2 = list.get(j+1).split(",");
+				/*array2[0] = 更新後の収入 or 収支
+				 *array2[1] = 更新後の内容
+				 *array2[2] = 更新後のコスト
+				 */
 				j=j+2;
 				Class.forName("com.mysql.jdbc.Driver");
 				con = DriverManager.getConnection(
